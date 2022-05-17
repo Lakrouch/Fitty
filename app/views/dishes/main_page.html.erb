@@ -1,10 +1,37 @@
-<h1>Main page</h1>
-<ul>
-  <% @dishes.each do |dish| %>
-    <li>
-      <a href="/dishes/<%= dish.id %>">
-        <%= dish.name %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <%= render "header"%>
+</header>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @dishes.each do |dish| %>
+        <div class="col">
+          <div class="card shadow-sm" style="width: 18rem;">
+            <img src="<%=asset_path(dish.photo)%>" class="card-img-top" width="100%" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><%=dish.name%></h5>
+              <p class="card-text">Calories: <%=dish.cal%></p>
+              <a href="dishes/<%=dish.id%>" class="btn btn-success">Let's cook</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% unless !user_signed_in?%>
+      <div class="card shadow-sm" style="width: 18rem;">
+        <img src="<%=asset_path("plus.png")%>" class="card-img-top" width="100%" height="225">
+        <div class="card-body">
+          <h5 class="card-title">Add your dish</h5>
+          <a href="dishes/new" class="btn btn-success">Create</a>
+        </div>
+      </div>
+        <%end %>
+    </div>
+  </div>
+</div>
+</body>
+
+

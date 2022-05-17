@@ -1,0 +1,47 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <%= render "header"%>
+</header>
+
+
+<h1>New Dish</h1>
+
+<%= form_with model: @dish do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :cal %><br>
+    <%= form.text_area :cal %>
+  </div>
+
+  <div>
+    <%= form.label :ingredients %><br>
+    <%= form.text_area :ingredients %>
+  </div>
+
+  <div>
+    <%= form.label :recipe %><br>
+    <%= form.text_area :recipe %>
+  </div>
+
+  <div>
+    <%= form.label :photo %><br>
+    <%= form.text_area :photo %>
+  </div>
+
+  <div>
+    <%= form.label :author_id %><br>
+    <%= form.text_area :author_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

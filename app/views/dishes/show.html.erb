@@ -1,0 +1,17 @@
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<header>
+  <%= render "header"%>
+</header>
+<div class="col">
+  <div class="card shadow-sm" style="width: 18rem;">
+    <img src="<%=asset_path(@dish.photo)%>" class="card-img-top" width="100%" height="225">
+    <div class="card-body">
+      <h5 class="card-title"><%=@dish.name%></h5>
+      <p class="card-text">Calories: <%=@dish.cal%></p>
+      <p class="card-text">Ingredients: <%=@dish.ingridients%></p>
+      <p class="card-text">Recipe: <%=@dish.recipe%></p>
+    </div>
+  </div>
+</div>
