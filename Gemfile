@@ -9,6 +9,10 @@ gem 'net-http', '>=0.2.2'
 
 gem 'devise', '~> 4.8'
 
+gem 'multi_json', '~> 1.15'
+
+gem 'dragonfly', '~> 1.4'
+
 gem 'popper_js', "~>2.9.3"
 
 gem 'bootstrap', "~>5.1.3"

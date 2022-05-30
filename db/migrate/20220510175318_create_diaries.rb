@@ -1,10 +1,9 @@
 class CreateDiaries < ActiveRecord::Migration[7.0]
   def change
-    drop_table :diaries
     create_table :diaries do |t|
-      t.integer :user_id
-      t.integer :dish_id
-      t.timestamp :time
+      t.integer :user_id, null: false
+      t.integer :dish_id, null: false
+      t.timestamp :time, null: false
 
       t.timestamps
     end

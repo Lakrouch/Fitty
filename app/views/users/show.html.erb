@@ -3,15 +3,34 @@
 </head>
 <body>
 <header>
-  <%= render "header"%>
+  <%= render "layouts/header"%>
 </header>
 <div class="col">
   <div class="card shadow-sm" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-text"><%=@user.name%></h5>
       <p class="card-text">Email: <%=@user.email%></p>
+      <p class="card-text">Name: <%=@profile.name%></p>
+      <a href="<%= edit_profile_path %>" class="btn btn-success">Edit</a>
     </div>
   </div>
 </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+</div>
+    <%unless @diaries == [nil] %>
+    <%@diaries.each do |diary| %>
+            <h1><%=diary.time%></h1>
+            <h1><%=Profile.find_by_users_id(diary.user_id).name%></h1>
+            <h1><%=Dish.find_by_id(diary.dish_id).name%></h1>
+    <%end%>
+    <%end%>
+    <%= form_with model: @diary do |form| %>
+      <div>
+        <%= form.label :dish_id %>
+        <%= form.text_field :dish_id %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <%end %>
+  </div>
+</div>
+</body>

@@ -3,7 +3,7 @@
 </head>
 <body>
 <header>
-  <%= render "header"%>
+  <%= render "layouts/header"%>
 </header>
 
 
@@ -21,8 +21,8 @@
   </div>
 
   <div>
-    <%= form.label :ingredients %><br>
-    <%= form.text_area :ingredients %>
+    <%= form.label :ingridients %><br>
+    <%= form.text_area :ingridients %>
   </div>
 
   <div>
@@ -31,13 +31,7 @@
   </div>
 
   <div>
-    <%= form.label :photo %><br>
-    <%= form.text_area :photo %>
-  </div>
-
-  <div>
-    <%= form.label :author_id %><br>
-    <%= form.text_area :author_id %>
+    <%= form.file_field :image %>
   </div>
 
   <div>

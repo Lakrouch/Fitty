@@ -3,7 +3,7 @@
 </head>
 <body>
 <header>
-  <%= render "header"%>
+  <%= render "layouts/header"%>
 </header>
 <div class="album py-5 bg-light">
   <div class="container">
@@ -11,10 +11,10 @@
       <% @dishes.each do |dish| %>
         <div class="col">
           <div class="card shadow-sm" style="width: 18rem;">
-            <img src="<%=asset_path(dish.photo)%>" class="card-img-top" width="100%" height="225">
+            <img src=<%= dish.image.url%> class="card-img-top" width="100%" height="225">
             <div class="card-body">
               <h5 class="card-title"><%=dish.name%></h5>
-              <p class="card-text">Calories: <%=dish.cal%></p>
+              <p class="card-text">KKal: <%=dish.cal%></p>
               <a href="dishes/<%=dish.id%>" class="btn btn-success">Let's cook</a>
             </div>
           </div>
@@ -25,7 +25,7 @@
         <img src="<%=asset_path("plus.png")%>" class="card-img-top" width="100%" height="225">
         <div class="card-body">
           <h5 class="card-title">Add your dish</h5>
-          <a href="dishes/new" class="btn btn-success">Create</a>
+          <a href="/dishes/new" class="btn btn-success">Create</a>
         </div>
       </div>
         <%end %>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users do
-	  get '/users/sign_out', to: 'dishes#main_page'
-  end
+  devise_for :users
 
-  get 'users/profile', as: 'user_root_url'
-	root 'dishes#main_page'
-	resources :dishes
+  get '/dishes/index', as: 'user_root_url'
+  root 'dishes#index'
+  get '/users/list', to: 'users#list'
+  post '/users(/:id)', to: 'diaries#create'
+  resources :dishes
   resources :users
+  resources :profiles
 end
