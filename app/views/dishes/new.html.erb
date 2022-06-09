@@ -22,7 +22,7 @@
 
   <div>
     <%= form.label :ingredients %><br>
-    <%= form.text_area :ingredients %>
+    <%= form.collection_select :ingredients, @ingredients, :id, :name, include_blank: true %>
   </div>
 
   <div>

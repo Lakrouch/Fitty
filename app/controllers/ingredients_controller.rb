@@ -1,6 +1,16 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    @ingredients = []
+    Ingredient.all.each do |ingredient|
+      if ingredient.user.profile.role
+        @ingredients.append(ingredient)
+        next
+      end
+      next unless user_signed_in?
+
+      @ingredients.append(ingredient) unless ingredient.user != current_user
+    end
+    @ingredients
   end
 
   def new
@@ -26,6 +36,6 @@ class IngredientsController < ApplicationController
 
   def ingredient_params
     input_params = params.require(:ingredient).permit(:name, :image)
-    input_params.merge({ 'author_id' => current_user.id })
+    input_params.merge({ 'user_id' => current_user.id })
   end
 end

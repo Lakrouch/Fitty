@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :dishes, dependent: :destroy
   has_many :diaries, dependent: :destroy
+  has_many :ingredients, dependent: :destroy
 end

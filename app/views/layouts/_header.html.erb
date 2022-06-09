@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <a class="navbar-brand">Fitty</a>
     <a class="nav-link active" aria-current="page" href="<%= root_path %>">Menu</a>
+    <a class="nav-link active" aria-current="page" href='/ingredients'>Ingredients</a>
     <% if user_signed_in? %>
       <%unless !current_user.profile.role %>
         <a class="nav-link active" aria-current="page" href='/users'>Users list</a>
-        <a class="nav-link active" aria-current="page" href='/ingredients'>Ingredients</a>
       <% end %>
       <a class="nav-link active" aria-current="page" href='/users/<%=current_user.id%>'>Profile</a>
       <a class="nav-link active" aria-current="page" href='<%=destroy_user_session_path %>' methods="delete">Go out</a>

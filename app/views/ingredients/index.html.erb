@@ -25,13 +25,15 @@
           </div>
         <% end %>
       <% end %>
-      <div class="card shadow-sm" style="width: 18rem;">
-        <img src="<%=asset_path("plus.png")%>" class="card-img-top" width="100%" height="225">
-        <div class="card-body">
-          <h5 class="card-title">Add your ingredient</h5>
-          <a href="/ingredients/new" class="btn btn-success">Create</a>
+      <% unless !user_signed_in? %>
+        <div class="card shadow-sm" style="width: 18rem;">
+          <img src="<%=asset_path("plus.png")%>" class="card-img-top" width="100%" height="225">
+          <div class="card-body">
+            <h5 class="card-title">Add your ingredient</h5>
+            <a href="/ingredients/new" class="btn btn-success">Create</a>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

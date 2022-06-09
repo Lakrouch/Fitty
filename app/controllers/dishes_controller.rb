@@ -16,10 +16,12 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @ingredients = Ingredient.find_by(id: @dish.ingredients)
   end
 
   def new
     @dish = Dish.new
+    @ingredients = Ingredient.all
   end
 
   def create

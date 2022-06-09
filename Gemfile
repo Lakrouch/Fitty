@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.0"
 
+gem 'thor', '~> 1.2'
+
+gem 'httpclient', '~> 2.8'
+
+gem 'select2-rails', '~> 4.0'
+
 gem 'bcrypt', '>= 3.1.18'
 
 gem 'net-http', '>=0.2.2'
