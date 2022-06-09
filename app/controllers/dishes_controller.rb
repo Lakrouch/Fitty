@@ -3,7 +3,7 @@ class DishesController < ApplicationController
   def index
     @dishes = []
     Dish.all.each do |dish|
-      if Profile.find_by_user_id(dish.author_id).role
+      if dish.user.profile.role
         @dishes.append(dish)
         next
       end
@@ -32,11 +32,16 @@ class DishesController < ApplicationController
     end
   end
 
+  def destroy
+    Dish.find_by(id: params[:id]).destroy
+    redirect_to root_url
+  end
+
 
   private
 
   def dish_params
     input_params = params.require(:dish).permit(:name, :cal, :ingredients, :recipe, :image)
-    input_params.merge({ 'author_id' => current_user.id })
+    input_params.merge({ 'user_id' => current_user.id })
   end
 end
