@@ -1,4 +1,4 @@
 class Diary < ApplicationRecord
-	has_one :user
-	has_one :dish
+	belongs_to :user
+	belongs_to :dish
 end

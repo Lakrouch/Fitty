@@ -1,4 +1,5 @@
 class Dish < ApplicationRecord
 	dragonfly_accessor :image
-	has_one :user
+	belongs_to :user
+	has_many :diaries
 end

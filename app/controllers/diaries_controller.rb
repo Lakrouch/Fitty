@@ -1,3 +1,4 @@
+#TODO:  time  replace
 class DiariesController < ApplicationController
 
   def new

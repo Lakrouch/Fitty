@@ -1,16 +1,15 @@
+# frozen_string_literal: true
 class DishesController < ApplicationController
   def index
     @dishes = []
     Dish.all.each do |dish|
-      unless !Profile.find_by_users_id(dish.author_id).role
+      if Profile.find_by_user_id(dish.author_id).role
         @dishes.append(dish)
         next
       end
-      unless !user_signed_in?
-        unless dish.author_id != current_user.id
-          @dishes.append(dish)
-        end
-      end
+      next unless user_signed_in?
+
+      @dishes.append(dish) unless dish.author_id != current_user.id
     end
     @dishes
   end
@@ -37,7 +36,7 @@ class DishesController < ApplicationController
   private
 
   def dish_params
-    input_params = params.require(:dish).permit(:name, :cal, :ingridients, :recipe, :image)
-    input_params.merge({"author_id" => current_user.id})
+    input_params = params.require(:dish).permit(:name, :cal, :ingredients, :recipe, :image)
+    input_params.merge({ 'author_id' => current_user.id })
   end
 end

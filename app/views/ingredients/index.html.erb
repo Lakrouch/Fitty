@@ -1,0 +1,33 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <%= render "layouts/header"%>
+</header>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% unless @ingredients.nil? %>
+        <% @ingredients.each do |ingredient| %>
+          <div class="col">
+            <div class="card shadow-sm" style="width: 18rem;">
+              <img src=<%= ingredient.image.url%> class="card-img-top" width="100%" height="225">
+              <div class="card-body">
+                <h5 class="card-title"><%=ingredient.name%></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="card shadow-sm" style="width: 18rem;">
+        <img src="<%=asset_path("plus.png")%>" class="card-img-top" width="100%" height="225">
+        <div class="card-body">
+          <h5 class="card-title">Add your ingredient</h5>
+          <a href="/ingredients/new" class="btn btn-success">Create</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

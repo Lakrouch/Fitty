@@ -9,8 +9,16 @@
   <div class="col">
     <div class="card shadow-sm" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-text"><%=Profile.find_by_users_id(user.id).name%></h5>
+        <h5 class="card-text"><%=user.profile.name%></h5>
         <p class="card-text"><%=user.email%></p>
+        <%unless current_user == user%>
+          <%= button_to "delete", user, method: :delete%>
+          <% if user.profile.role %>
+            <%= button_to "make not an admin", "/users/change_role/#{user.id}", method: :put%>
+          <% else %>
+            <%= button_to "make an admin", "/users/change_role/#{user.id}", method: :put%>
+          <% end %>
+        <%end%>
       </div>
     </div>
   </div>
