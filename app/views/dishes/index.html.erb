@@ -15,12 +15,12 @@
             <div class="card-body">
               <h5 class="card-title"><%=dish.name%></h5>
               <p class="card-text">KKal: <%=dish.cal%></p>
-              <a href="dishes/<%=dish.id%>" class="btn btn-success">Let's cook</a>
-              <% unless !user_signed_in?%>
-                <% unless !current_user.profile.role %>
-                  <%= button_to "delete", dish, method: :delete%>
+                <a href="dishes/<%=dish.id%>" class="btn btn-success">Let's cook</a>
+                <% unless !user_signed_in?%>
+                  <% unless !current_user.profile.role %>
+                    <%= button_to "Delete", dish, method: :delete, class: 'btn btn-danger'%>
+                  <% end %>
                 <% end %>
-              <% end %>
             </div>
           </div>
         </div>

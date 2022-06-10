@@ -5,6 +5,7 @@
 <header>
   <%= render "layouts/header"%>
 </header>
+<div class="box">
 <% @users.each do |user| %>
   <div class="col">
     <div class="card shadow-sm" style="width: 18rem;">
@@ -12,14 +13,16 @@
         <h5 class="card-text"><%=user.profile.name%></h5>
         <p class="card-text"><%=user.email%></p>
         <%unless current_user == user%>
-          <%= button_to "delete", user, method: :delete%>
+          <%= button_to "Delete", user, method: :delete, class: 'btn btn-danger'%>
           <% if user.profile.role %>
-            <%= button_to "make not an admin", "/users/change_role/#{user.id}", method: :put%>
+            <%= button_to "Make not an admin", "/users/change_role/#{user.id}", method: :put, class: 'btn btn-success'%>
           <% else %>
-            <%= button_to "make an admin", "/users/change_role/#{user.id}", method: :put%>
+            <%= button_to "Make an admin", "/users/change_role/#{user.id}", method: :put, class: 'btn btn-success'%>
           <% end %>
         <%end%>
       </div>
     </div>
   </div>
 <% end %>
+</div>
+</body>
