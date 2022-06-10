@@ -1,5 +1,7 @@
-class Ingredient < ApplicationRecord
-	dragonfly_accessor :image
+# frozen_string_literal: true
 
-	belongs_to :user
+class Ingredient < ApplicationRecord
+  dragonfly_accessor :image
+
+  belongs_to :user
 end

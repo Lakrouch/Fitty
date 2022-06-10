@@ -1,0 +1,27 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <%= render "layouts/header"%>
+</header>
+    <ol class="list-group list-group-numbered">
+      <div class="box">
+        <% @notes.each do |note| %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold"><%= note.time %></div>
+            <%= note.dish.name %>
+          </div>
+          <span class="badge bg-success rounded-pill"><%= note.dish.cal %></span>
+        </li>
+        <% end %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Add new note</div>
+            <a href="/notes/new" class="btn btn-success">Create</a>
+          </div>
+        </li>
+      </div>
+    </ol>
+</body>

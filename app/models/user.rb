@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -5,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :profile, dependent: :destroy
   has_many :dishes, dependent: :destroy
-  has_many :diaries, dependent: :destroy
+  has_one :diary
+  has_many :notes, through: :diary, dependent: :destroy
   has_many :ingredients, dependent: :destroy
 end

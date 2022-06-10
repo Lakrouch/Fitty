@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'dragonfly'
 
 # Configure
 Dragonfly.app.configure do
   plugin :imagemagick
 
-  secret "e1552bedb27e6fdaf548a1f441c58f0218b99e7eda84e9c31ef6d881bec4292d"
+  secret 'e1552bedb27e6fdaf548a1f441c58f0218b99e7eda84e9c31ef6d881bec4292d'
 
-  url_format "/media/:job/:name"
+  url_format '/media/:job/:name'
 
   datastore :file,
-    root_path: Rails.root.join('public/system/dragonfly', Rails.env),
-    server_root: Rails.root.join('public')
+            root_path: Rails.root.join('public/system/dragonfly', Rails.env),
+            server_root: Rails.root.join('public')
 end
 
 # Logger

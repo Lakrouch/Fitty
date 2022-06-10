@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class DishesController < ApplicationController
   def index
     @dishes = []
@@ -9,7 +10,8 @@ class DishesController < ApplicationController
       end
       next unless user_signed_in?
 
-      @dishes.append(dish) unless dish.author_id != current_user.id
+      @dishes.concat(current_user.dishes)
+      @dishes = @dishes.uniq
     end
     @dishes
   end
@@ -38,7 +40,6 @@ class DishesController < ApplicationController
     Dish.find_by(id: params[:id]).destroy
     redirect_to root_url
   end
-
 
   private
 

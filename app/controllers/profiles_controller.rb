@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find_by_users_id(current_user.id)

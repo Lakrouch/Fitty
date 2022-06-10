@@ -6,8 +6,8 @@
   <%= render "layouts/header"%>
 </header>
 
-
-<h1>New Dish</h1>
+<div class="box">
+<h1>New ingredient</h1>
 
 <%= form_with model: @ingredient do |form| %>
   <div>
@@ -23,3 +23,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+</body>

@@ -10,24 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_09_223033) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_10_181626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "diaries", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "dish_id"
-    t.datetime "time", precision: nil
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "dishes", force: :cascade do |t|
-    t.string "name"
-    t.float "cal"
-    t.string "ingredients"
-    t.text "recipe"
-    t.integer "author_id"
+    t.string "name", null: false
+    t.float "cal", null: false
+    t.string "ingredients", null: false
+    t.text "recipe", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_uid"
@@ -37,24 +35,36 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_223033) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_uid"
-    t.string "image_name"
-    t.bigint "user_id"
+    t.string "image_uid", null: false
+    t.string "image_name",null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_ingredients_on_user_id"
   end
 
   create_table "ingridients", force: :cascade do |t|
-    t.string "name"
-    t.integer "author_id"
+    t.string "name", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "diary_id"
+    t.datetime "time", precision: nil, null: false
+    t.bigint "dish_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diary_id"], name: "index_notes_on_diary_id"
+    t.index ["dish_id"], name: "index_notes_on_dish_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "role", default: false

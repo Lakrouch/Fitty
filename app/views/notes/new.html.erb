@@ -1,0 +1,19 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <%= render "layouts/header"%>
+</header>
+<div class="box">
+<%= form_with model: @note do |form| %>
+  <div>
+    <%= form.label :dish %><br>
+    <%= form.collection_select :dish_id, @dishes, :id, :name, include_blank: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<%end %>
+</div>
+</body>

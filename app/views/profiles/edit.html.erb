@@ -5,6 +5,7 @@
 <header>
   <%= render "layouts/header"%>
 </header>
+<div class="box">
 <%= form_with model: @profile do |form| %>
   <div>
     <%= form.label :name %>
@@ -14,3 +15,5 @@
     <%= form.submit %>
   </div>
 <%end %>
+</div>
+</body>

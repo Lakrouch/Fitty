@@ -4,6 +4,7 @@
     <a class="nav-link active" aria-current="page" href="<%= root_path %>">Menu</a>
     <a class="nav-link active" aria-current="page" href='/ingredients'>Ingredients</a>
     <% if user_signed_in? %>
+      <a class="nav-link active" aria-current="page" href='/diaries'>Diary</a>
       <%unless !current_user.profile.role %>
         <a class="nav-link active" aria-current="page" href='/users'>Users list</a>
       <% end %>
