@@ -4,14 +4,19 @@
 <header>
   <%= render "layouts/header"%>
 </header>
+<div class="box">
 <div class="col">
   <div class="card shadow-sm" style="width: 18rem;">
     <img src=<%=@dish.image.url%> class="card-img-top" width="100%" height="225">
     <div class="card-body">
       <h5 class="card-title"><%=@dish.name%></h5>
       <p class="card-text">Calories: <%=@dish.cal%></p>
-      <p class="card-text">Ingredients: <%=@ingredients.name%></p>
+      <p class="card-text"> Ingredients: <% @ingredients.each do |ingredient| %>
+        <%=ingredient.name%>
+      <% end %>
+      </p>
       <p class="card-text">Recipe: <%=@dish.recipe%></p>
     </div>
   </div>
+</div>
 </div>
