@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 class DishesController < ApplicationController
   def index
     @dishes = []
@@ -29,6 +30,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
 
+    binding.pry
     if @dish.save
       redirect_to root_path
     else
