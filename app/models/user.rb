@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :merged_tables
+
   validates :email, :encrypted_password, presence: true
 
   has_one :profile, dependent: :destroy
@@ -14,4 +16,10 @@ class User < ApplicationRecord
   has_many :notes, through: :diary, dependent: :destroy
   has_many :ingredients, dependent: :destroy
 
+  private
+  
+  def merged_tables
+    Profile.create({ name: email, role: 0, user_id: id })
+    Diary.create({ user_id: id })
+  end
 end

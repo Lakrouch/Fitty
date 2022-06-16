@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
 
-  before_action :get_user, only: %i[destroy change_role]
+  before_action :get_user, only: %i[show destroy change_role]
 
   def index
     @users = User.all
