@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class DishesController < ApplicationController
+
+  before_action :get_dish, only: %i[show destroy change_role]
+
   def index
     @dishes = []
     Dish.all.each do |dish|
@@ -18,8 +21,7 @@ class DishesController < ApplicationController
 
   def show
     @ingredients = []
-    @dish = Dish.find_by(id: params[:id])
-    @ingredients_of_dish = IngredientOfDish.where(dish_id: @dish.id)
+    @ingredients_of_dish = IngredientOfDish.belongs_to_dish(@dish.id)
     @ingredients_of_dish.each do |ingredient_of_dish|
       @ingredients.append Ingredient.find_by(id: ingredient_of_dish.ingredient_id)
     end
@@ -31,8 +33,6 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_params)
-
     if @dish.save
       ingredients = params.require(:ingredients)
       ingredients.each do |ingredient|
@@ -46,7 +46,7 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    Dish.find_by(id: params[:id]).destroy
+    @dish.destroy
     redirect_to root_url
   end
 
@@ -55,6 +55,9 @@ class DishesController < ApplicationController
   def dish_params
     input_params = params.require(:dish).permit(:name, :cal, :recipe, :image)
     input_params.merge({ 'user_id' => current_user.id })
+  end
 
+  def get_dish
+    @dish = Dish.find_by(id: params[:id])
   end
 end

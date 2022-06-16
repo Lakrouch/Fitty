@@ -1,5 +1,6 @@
-class NotesController < ApplicationController
+# frozen_string_literal: true
 
+class NotesController < ApplicationController
   def new
     @note = Note.new
     @dishes = Dish.all
@@ -9,7 +10,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to "/diaries"
+      redirect_to '/diaries'
     else
       render :new, status: :unprocessable_entity
     end

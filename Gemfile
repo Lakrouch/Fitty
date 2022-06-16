@@ -5,7 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
-gem 'jquery-rails',  '~> 4.5'
+gem 'omniauth', '~> 2.1'
+
+gem 'omniauth-vkontakte', '~> 1.7'
+
+gem 'jquery-rails', '~> 4.5'
 
 gem 'turbolinks',  '~> 5.2'
 
