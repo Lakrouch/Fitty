@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registration' }
+  devise_for :users
 
   get '/dishes/index', as: 'user_root_url'
   root 'dishes#index'
