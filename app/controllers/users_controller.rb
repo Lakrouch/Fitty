@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-
-  before_action :get_user, only: %i[show destroy change_role]
+  before_action :find_user, only: %i[show destroy change_role]
 
   def index
     @users = User.all
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
 
   private
 
-  def get_user
+  def find_user
     @user = User.find_by(id: params[:id])
   end
 end

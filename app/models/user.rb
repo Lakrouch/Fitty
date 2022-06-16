@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :ingredients, dependent: :destroy
 
   private
-  
+
   def merged_tables
     Profile.create({ name: email, role: 0, user_id: id })
     Diary.create({ user_id: id })

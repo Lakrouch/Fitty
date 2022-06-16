@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class DishesController < ApplicationController
-
-  before_action :get_dish, only: %i[show destroy change_role]
+  before_action :find_dish, only: %i[show destroy change_role]
 
   def index
     @dishes = []
@@ -57,7 +56,7 @@ class DishesController < ApplicationController
     input_params.merge({ 'user_id' => current_user.id })
   end
 
-  def get_dish
+  def find_dish
     @dish = Dish.find_by(id: params[:id])
   end
 end
