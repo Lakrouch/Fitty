@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-  def edit
-    @profile = Profile.find_by_users_id(current_user.id)
-  end
+
+  before_action :find_current_user, only: %i[edit update]
 
   def update
-    @profile = Profile.find_by_users_id(current_user.id)
+
     if @profile.update(profile_params)
       redirect_to root_path
     else
@@ -18,5 +17,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:name)
+  end
+
+  def find_current_user
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 end

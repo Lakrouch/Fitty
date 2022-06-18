@@ -3,11 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
-
-gem 'omniauth', '~> 2.1'
-
-gem 'omniauth-vkontakte', '~> 1.7'
+ruby '2.7.3'
 
 gem 'jquery-rails', '~> 4.5'
 

@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
+
+  def index
+    @notes = current_user.diary.notes
+  end
+
   def new
     @note = Note.new
     @dishes = Dish.all
@@ -10,7 +15,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect_to '/diaries'
+      redirect_to notes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -19,8 +24,8 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:dish_id).merge({ user_id: current_user.id,
+    params.require(:note).permit(:dish_id).merge( user_id: current_user.id,
                                                    diary_id: current_user.diary.id,
-                                                   time: Time.utc(*Time.new.to_a).strftime('%Y-%m-%d %H:%M:%S') })
+                                                   time: Time.utc(*Time.new.to_a).strftime('%Y-%m-%d %H:%M:%S'))
   end
 end

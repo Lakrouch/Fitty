@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :dishes, dependent: :destroy
-  has_one :diary
+  has_one :diary, dependent: :destroy
   has_many :notes, through: :diary, dependent: :destroy
   has_many :ingredients, dependent: :destroy
 

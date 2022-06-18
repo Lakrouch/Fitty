@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  dish_id: 1
-  time: 2022-05-10 20:53:18
+one: {
+  id: 7,
+  user_id: 12.
+}
 
-two:
-  user_id: 1
-  dish_id: 1
-  time: 2022-05-10 20:53:18
+two: {
+  id: 8,
+  user_id: 11
+}

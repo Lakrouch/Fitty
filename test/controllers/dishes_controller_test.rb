@@ -3,8 +3,8 @@
 require 'test_helper'
 
 class DishesControllerTest < ActionDispatch::IntegrationTest
-  test 'should get main_page' do
-    get dishes_main_page_url
+  test 'should get index' do
+    get '/dishes/index'
     assert_response :success
   end
 end

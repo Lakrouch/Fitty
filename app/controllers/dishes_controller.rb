@@ -19,11 +19,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    @ingredients = []
-    @ingredients_of_dish = IngredientOfDish.belongs_to_dish(@dish.id)
-    @ingredients_of_dish.each do |ingredient_of_dish|
-      @ingredients.append Ingredient.find_by(id: ingredient_of_dish.ingredient_id)
-    end
+    @ingredients = @dish.ingredients
   end
 
   def new
@@ -32,10 +28,11 @@ class DishesController < ApplicationController
   end
 
   def create
+    @dish = Dish.new(dish_params)
     if @dish.save
       ingredients = params.require(:ingredients)
       ingredients.each do |ingredient|
-        @ingredient_of_dish = IngredientOfDish.create({ dish_id: @dish.id, ingredient_id: ingredient.to_i })
+        @ingredient_of_dish = DishIngredient.create({ dish_id: @dish.id, ingredient_id: ingredient.to_i })
         @ingredient_of_dish.save
       end
       redirect_to root_path
@@ -53,7 +50,7 @@ class DishesController < ApplicationController
 
   def dish_params
     input_params = params.require(:dish).permit(:name, :cal, :recipe, :image)
-    input_params.merge({ 'user_id' => current_user.id })
+    input_params.merge({ user_id: current_user.id })
   end
 
   def find_dish
