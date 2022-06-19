@@ -24,8 +24,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:dish_id).merge( user_id: current_user.id,
-                                                   diary_id: current_user.diary.id,
+    params.require(:note).permit(:dish_id).merge( diary_id: current_user.diary.id,
                                                    time: Time.utc(*Time.new.to_a).strftime('%Y-%m-%d %H:%M:%S'))
   end
 end

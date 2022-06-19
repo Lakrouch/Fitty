@@ -9,8 +9,3 @@ one: {
   email: "admin@a.a",
   encrypted_password: "aaaaaa"
 }
-two: {
-  id: 13,
-  email: "badmin@a.a",
-  encrypted_password: "bbbbbb"
-}

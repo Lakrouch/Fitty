@@ -2,15 +2,13 @@
 
 require 'test_helper'
 
-class DishTest < ActiveSupport::TestCase
+class IngredientTest < ActiveSupport::TestCase
   def setup
-    @green = dishes :one
-    @red_name = dishes :two
-    @red_cal = dishes :three
-    @red_recipe = dishes :four
-    @red_image_uid = dishes :five
-    @red_image_name = dishes :six
-    @red_user_id = dishes :seven
+    @green = ingredients :one
+    @red_name = ingredients :two
+    @red_image_uid = ingredients :three
+    @red_image_name = ingredients :four
+    @red_user_id = ingredients :five
   end
 
   test "should be valid" do
@@ -19,14 +17,6 @@ class DishTest < ActiveSupport::TestCase
 
   test "should be not valid name" do
     assert_not @red_name.valid?
-  end
-
-  test "should be not valid cal" do
-    assert_not @red_cal.valid?
-  end
-
-  test "should be not valid recipe" do
-    assert_not @red_recipe.valid?
   end
 
   test "should be not valid image_uid" do

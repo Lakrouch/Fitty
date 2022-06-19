@@ -11,5 +11,10 @@ one: {
 #
 two: {
   dish_id: 35,
+  ingredient_id: nil
+}
+
+three: {
+  dish_id: nil,
   ingredient_id: 17
 }

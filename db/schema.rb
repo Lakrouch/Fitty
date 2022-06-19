@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_18_141448) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_133256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,7 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_141448) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "diary_id"
     t.datetime "time", precision: nil, null: false
     t.bigint "dish_id"
@@ -60,7 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_141448) do
     t.datetime "updated_at", null: false
     t.index ["diary_id"], name: "index_notes_on_diary_id"
     t.index ["dish_id"], name: "index_notes_on_dish_id"
-    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
