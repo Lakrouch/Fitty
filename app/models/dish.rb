@@ -3,7 +3,7 @@
 class Dish < ApplicationRecord
   dragonfly_accessor :image
 
-  validates :name, :cal, :recipe, :image_name, :image_uid, presence: true
+  validates :name, :cal, :recipe, :image_name, presence: true
 
   belongs_to :user
   has_many :notes, dependent: :destroy
