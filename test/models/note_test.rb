@@ -9,15 +9,15 @@ class NoteTest < ActiveSupport::TestCase
     @red_dish_id = notes :four
   end
 
-  test "should be valid" do
+  test 'should be valid' do
     assert @green.valid?
   end
 
-  test "should be not valid diary_id" do
+  test 'should be not valid diary_id' do
     assert_not @red_diary_id.valid?
   end
 
-  test "should be not valid dish_id" do
+  test 'should be not valid dish_id' do
     assert_not @red_dish_id.valid?
   end
 end

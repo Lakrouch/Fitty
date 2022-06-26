@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class DropAllTables < ActiveRecord::Migration[7.0]
   def change
     drop_table :diaries
@@ -6,5 +7,6 @@ class DropAllTables < ActiveRecord::Migration[7.0]
     drop_table :notes
     drop_table :dishes
     drop_table :dish_ingredients
-    drop_table :users end
+    drop_table :users 
+  end
 end

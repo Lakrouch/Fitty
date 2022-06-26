@@ -25,7 +25,7 @@
 
     <select class="js-multiple" name="ingredients[]" multiple="multiple">
       <% @ingredients.each do |ingredient| %>
-        <option value=<%=ingredient.name %>><%=ingredient.name %></option>
+        <option value=<%=ingredient.id %>><%=ingredient.name %></option>
       <%end %>
     </select>
     <div>

@@ -10,19 +10,19 @@ class ProfileTest < ActiveSupport::TestCase
     @red_user_id = profiles :four
   end
 
-  test "should  be valid"  do
+  test 'should  be valid'  do
     assert @green.valid?
   end
 
-  test "should be not valid name" do
+  test 'should be not valid name' do
     assert_not @red_name.valid?
   end
 
-  test "should be not valid role" do
+  test 'should be not valid role' do
     assert_not @red_role.valid?
   end
 
-  test "should be not valid user_id" do
+  test 'should be not valid user_id' do
     assert_not @red_user_id.valid?
   end
 end

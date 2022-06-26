@@ -30,11 +30,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-      ingredients = params.require(:ingredients)
-      ingredients.each do |ingredient|
-        @ingredient_of_dish = DishIngredient.create({ dish_id: @dish.id, ingredient_id: ingredient.to_i })
-        @ingredient_of_dish.save
-      end
+      @dish.ingredients_create(params.require(:ingredients))
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity

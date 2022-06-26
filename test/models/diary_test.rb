@@ -9,11 +9,11 @@ class DiaryTest < ActiveSupport::TestCase
     @diary_red = diaries(:two)
   end
 
-  test "should  be valid" do
+  test 'should  be valid' do
     assert @diary_green.valid?
   end
 
-  test "should be not valid" do
+  test 'should be not valid' do
     assert_not @diary_red.valid?
   end
 end

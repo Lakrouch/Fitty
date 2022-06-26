@@ -13,31 +13,31 @@ class DishTest < ActiveSupport::TestCase
     @red_user_id = dishes :seven
   end
 
-  test "should be valid" do
+  test 'should be valid' do
     assert @green.valid?
   end
 
-  test "should be not valid name" do
+  test 'should be not valid name' do
     assert_not @red_name.valid?
   end
 
-  test "should be not valid cal" do
+  test 'should be not valid cal' do
     assert_not @red_cal.valid?
   end
 
-  test "should be not valid recipe" do
+  test 'should be not valid recipe' do
     assert_not @red_recipe.valid?
   end
 
-  test "should be not valid image_uid" do
+  test 'should be not valid image_uid' do
     assert_not @red_image_uid.valid?
   end
 
-  test "should be not valid image_name" do
+  test 'should be not valid image_name' do
     assert_not @red_image_name.valid?
   end
 
-  test "should be not valid user_id" do
+  test 'should be not valid user_id' do
     assert_not @red_user_id.valid?
   end
 end

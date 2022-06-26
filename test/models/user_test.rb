@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
     @green = users :one
   end
 
-  test "should  be valid"  do
+  test 'should  be valid'  do
     assert @green.valid?
   end
 end
