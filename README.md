@@ -40,3 +40,4 @@ See more in Gemfile
 # What it can to do?
 
 You can create or choose dishes from ingredients that was made by you or another users
+___
